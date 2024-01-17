@@ -1,0 +1,15 @@
+{
+    "name": "sergeich5/laravel-telegram-logs",
+    "license": "MIT",
+    "description": "Telegram log channel",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Sergeich5\\LaravelTelegramLogs\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "laravel/framework": "^8.0"
+    }
+}
