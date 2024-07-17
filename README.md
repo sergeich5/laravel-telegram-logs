@@ -30,3 +30,10 @@ composer require sergeich5/laravel-telegram-logs
 ```bash
 php artisan tg_logs:updates {channel_name}
 ```
+
+Result:
+
+| date                | chat       | chat_id   | from     | from_id | message_id | thread_id | data                               |
+|---------------------|------------|-----------|----------|---------|------------|-----------|------------------------------------|
+| 2024-07-17 10:32:38 | CHAT_NAME1 | -12345678 | UserName | 12345   | 1          | -         | Hello, world                       |
+| 2024-07-17 11:26:04 | CHAT_NAME2 | -87654321 | UserName | 12345   | 2          | 5         | topic TOPIC_NAME created with id 5 |
