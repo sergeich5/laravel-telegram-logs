@@ -11,7 +11,7 @@ class TelegramGetUpdates extends Command
 {
     protected $signature = 'tg_logs:updates {channel}';
 
-    protected $description = 'Telegram logsr get updates';
+    protected $description = 'Telegram logs get updates';
 
     function handle(): int
     {
