@@ -24,3 +24,9 @@ composer require sergeich5/laravel-telegram-logs
     'thread_id' => '123',
 ],
 ```
+
+## Get Telegram updates
+
+```bash
+php artisan tg_logs:updates {channel_name}
+```
