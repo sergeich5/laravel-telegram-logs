@@ -7,6 +7,7 @@ use Monolog\Formatter\FormatterInterface;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
+use Monolog\LogRecord;
 
 /**
  * Class TelegramHandler
@@ -36,9 +37,9 @@ class TelegramHandler extends AbstractProcessingHandler
     }
 
     /**
-     * @param array $record
+     * @param LogRecord $record
      */
-    public function write(array $record): void
+    public function write(LogRecord $record): void
     {
         if (!$this->botToken || !$this->chatId) {
             throw new \InvalidArgumentException('Bot token or chat id is not defined for Telegram logger');
