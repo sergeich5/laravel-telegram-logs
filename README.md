@@ -22,6 +22,12 @@ composer require sergeich5/laravel-telegram-logs
     
     // int|null to send message to specific chat thread, see: https://core.telegram.org/api/threads
     'thread_id' => '123',
+    
+    // int|optional - telegram request timeout
+    'timeout' => 25,
+    
+    // string|optional telegram api domain
+    'domain' => 'https://api.telegram.org/',
 ],
 ```
 

@@ -16,6 +16,8 @@ class TelegramHandler extends AbstractProcessingHandler
 {
     private array $config;
     private string $botToken;
+    private int $timeout;
+    private string $domain;
     private string $chatId;
     private ?string $threadId;
 
@@ -31,6 +33,8 @@ class TelegramHandler extends AbstractProcessingHandler
 
         $this->config = $config;
         $this->botToken = $this->getConfigValue('token');
+        $this->timeout = $this->getConfigValue('timeout', 25);
+        $this->domain = $this->getConfigValue('domain', 'https://api.telegram.org/');
         $this->chatId = $this->getConfigValue('chat_id');
         $this->threadId = $this->getConfigValue('thread_id');
     }
@@ -87,7 +91,8 @@ class TelegramHandler extends AbstractProcessingHandler
         if (isset($this->threadId))
             $params['message_thread_id'] = $this->threadId;
 
-        \Http::get('https://api.telegram.org/bot' . $this->botToken . '/sendMessage', $params);
+        \Http::timeout($this->timeout)
+            ->get($this->domain . 'bot' . $this->botToken . '/sendMessage', $params);
     }
 
     /**
