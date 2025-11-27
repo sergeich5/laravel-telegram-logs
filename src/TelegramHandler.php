@@ -35,8 +35,8 @@ class TelegramHandler extends AbstractProcessingHandler
 
         $this->config = $config;
         $this->botToken = $this->getConfigValue('token');
-        $this->timeout = $this->getConfigValue('timeout', 25);
-        $this->domain = $this->getConfigValue('domain', 'https://api.telegram.org/');
+        $this->timeout = $this->getConfigValue('timeout') ?? 25;
+        $this->domain = $this->getConfigValue('domain') ?? 'https://api.telegram.org/';
         $this->chatId = $this->getConfigValue('chat_id');
         $this->threadId = $this->getConfigValue('thread_id');
     }
