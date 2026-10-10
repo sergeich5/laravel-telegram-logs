@@ -29,7 +29,7 @@ class TelegramGetUpdates extends Command
         }
 
         try {
-            $updates = $this->getUpdates($config['token']);
+            $updates = $this->getUpdates($config['domain'] ?? 'https://api.telegram.org/', $config['token']);
         } catch (Exception$e) {
             $this->error(sprintf('Telegram API %s: %s', $e->getCode(), $e->getMessage()));
             return self::FAILURE;
@@ -60,9 +60,9 @@ class TelegramGetUpdates extends Command
         return self::SUCCESS;
     }
 
-    private function getUpdates(string $token)
+    private function getUpdates(string $domain, string $token)
     {
-        $r = Http::get("https://api.telegram.org/bot{$token}/getUpdates");
+        $r = Http::get("{$domain}bot{$token}/getUpdates");
 
         if (!$r->successful() || !$r->json('ok'))
             throw new Exception($r->json('description'), $r->status());
